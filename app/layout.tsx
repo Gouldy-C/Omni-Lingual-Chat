@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Header from '@/components/Header'
-import { ThemeProvider } from "@/components/theme-provider"
-
+import { ThemeProvider } from "@/components/ThemeProvider"
+import ClientProviders from '@/components/ClientProviders'
 import './globals.css'
+import FirebaseAuthProvider from '@/components/FirebaseAuthProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,20 +19,27 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-      <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange>
+    <ClientProviders>
+      <html lang="en">
+        <head>
+          <link rel="icon" href="/ol-logo.svg" sizes="any"/>
+        </head>
+        <body className={inter.className}>
+          <FirebaseAuthProvider>
+            <ThemeProvider
+                  attribute="class"
+                  defaultTheme="system"
+                  enableSystem
+                  disableTransitionOnChange>
 
-          <Header />
+              <Header />
 
-          {children}
+              {children}
 
-        </ThemeProvider>
-      </body>
-    </html>
+            </ThemeProvider>
+          </FirebaseAuthProvider>
+        </body>
+      </html>
+    </ClientProviders>
   )
 }

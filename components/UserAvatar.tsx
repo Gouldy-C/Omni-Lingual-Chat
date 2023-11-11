@@ -7,12 +7,12 @@ import Image from "next/image";
 export default function UserAvatar(
   {name, image, className}
   :
-  {name: string, image?: string, className?: string}) {
+  {name?: string | null, image?: string | null, className?: string}) {
 
 
   return (
-    <div>
-      <Avatar className={cn("bg-white text-slate-900 cursor-pointer", className)}>
+    <>
+      <Avatar className={cn("bg-white text-slate-900 cursor-pointer mx-1 hover:scale-110 duration-300", className)}>
         {image && (
           <Image
             src={image} 
@@ -26,6 +26,6 @@ export default function UserAvatar(
         </AvatarFallback>
       </Avatar>
       <span className="sr-only">Avatar Image</span>
-    </div>
+    </>
   )
 }

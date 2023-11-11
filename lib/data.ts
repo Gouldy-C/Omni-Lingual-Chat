@@ -28,3 +28,51 @@ export const features = [
     description:"Join a thriving global community where diversity is celebrated. Omni-Lingual fosters connections beyond borders, encouraging meaningful conversations that transcend linguistic differences. Make friends, collaborate on projects, or simply broaden your horizons—all within the Omni-Lingual community.",
   },
 ]
+
+export const tiers = [
+  {
+    name: "Starter",
+    id: "starter",
+    href: "#",
+    priceMonthly: "Free",
+    description: "Start chatting with anyone, anywhere with some starter limitations!",
+    features: [
+      "10 Messages In Chats",
+      "2 Participants Per Chat",
+      "2 Chat Room Limit",
+      "Supports 2 Languages (English, German)",
+      "World Class Customer Support"
+    ]
+  },
+  {
+    name: "Basic",
+    id: "basic",
+    href: "#",
+    priceMonthly: "$2.99",
+    description: "Start chatting with anyone, anywhere with fewer limitations!",
+    features: [
+      "Unlimited Messages In Chats",
+      "2 Participants Per Chat",
+      "10 Chat Room Limit",
+      "Supports 3 Languages (English, German, + One Language Of Your Choice)",
+      "World Class Customer Support"
+    ]
+  },
+  {
+    name: "Pro",
+    id: "pro",
+    href: "#",
+    priceMonthly: "$6.99",
+    description: "Unlock the Full Potential with Pro Level Chatting!",
+    features: [
+      "Unlimited Messages In Chats",
+      "Unlimited Participants Per Chat",
+      "Unlimited Chat Rooms",
+      "Unlimited Access to All Supported Languages",
+      "Early Access to New Features and Languages",
+      "World Class Customer Support",
+      "Multimedia Sharing (Coming Soon)",
+    ]
+  },
+
+]

@@ -11,13 +11,16 @@ export default function Logo() {
     <Link href={"/"} prefetch={false} className="overflow-hidden">
       <div className=" flex items-end w-68 h-12">
         <Image
-          priority
+          priority={true}
           src={LogoImage}
           alt="Logo Image"
-          className="dark:filter dark:invert my-1 mx-2"
-          height={40}/>
-        <h1 className="text-3xl font-bold">
-          Omni Lingual
+          className="dark:filter dark:invert mx-2 my-auto"
+          height={35}/>
+        <h1 className="text-3xl font-bold first-letter:text-4xl">
+          Omni-
+        </h1>
+        <h1 className="text-3xl font-bold first-letter:text-4xl">
+          {" "}Lingual
         </h1>
       </div>
     </Link>
