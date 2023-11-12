@@ -10,9 +10,14 @@ import { DropdownMenu,
 import { Button } from "./ui/button";
 import { signIn, signOut } from "next-auth/react";
 import { useRouter } from 'next/navigation'
+import { useSubscriptionStore } from "@/store/store";
+import LoadingSpinner from "./LoadingSpinner";
+import { StarIcon } from "lucide-react";
 
 
 export default function UserButton({session}:{session : Session | null}) {
+
+  const subscription = useSubscriptionStore((state) => state.subscription)
 
   const { push } = useRouter()
   // subscription listener
@@ -30,8 +35,27 @@ export default function UserButton({session}:{session : Session | null}) {
         <DropdownMenuLabel>
           Hello, {session.user?.name}
         </DropdownMenuLabel>
+        
+        {subscription === undefined ?
+          <DropdownMenuLabel>
+            <LoadingSpinner/>
+          </DropdownMenuLabel> :
+        subscription?.role === "pro" ?
+
+          <DropdownMenuLabel className="flex items-center space-x-1 text-pink-500 animate-pulse">
+            <StarIcon fill="rgb(244 114 182)"/>
+            <p>PRO</p>
+          </DropdownMenuLabel>
+          : subscription?.role &&
+          <DropdownMenuLabel>
+            <p>{subscription.role[0].toUpperCase() + subscription.role.slice(1)}</p>
+          </DropdownMenuLabel>
+
+
+        }
+
         <DropdownMenuItem  onClick={() => push("/register")} className=" cursor-pointer">
-            My Account
+            Manage Account
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => signOut()} className=" cursor-pointer">
           Sign Out

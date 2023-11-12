@@ -2,14 +2,15 @@ import { getServerSession } from "next-auth";
 import Logo from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
 import UserButton from "./UserButton";
-import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
+import { authOptions } from "@/authOptions";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { MessagesSquareIcon } from "lucide-react";
 import CreateChatButton from "./CreateChatButton";
+import UpgradeBanner from "./UpgradeBanner";
 
 async function Header() {
-  const session = await getServerSession(authOptions)
+  const session = await getServerSession(authOptions);
 
   return (
     <header className="sticky top-0 z-50 bg-white dark:bg-slate-800">
@@ -22,30 +23,30 @@ async function Header() {
               <Button
                 variant="ghost"
                 className="px-0 rounded-full dark:hover:bg-slate-900">
-                <Link 
+                <Link
                   href={"/chat"}
                   prefetch={false}
                   className="flex justify-center items-center rounded-full w-10 h-10">
-                    <MessagesSquareIcon/>
+                  <MessagesSquareIcon />
                 </Link>
               </Button>
-              <CreateChatButton/>
+              <CreateChatButton />
             </>
           ) : (
             <>
-            <Link 
-              href={"/pricing"}
-              className="flex justify-center items-center rounded-full">
+              <Link
+                href={"/pricing"}
+                className="flex justify-center items-center rounded-full">
                 Pricing
-            </Link>
+              </Link>
             </>
           )}
 
           <ThemeToggle />
-          <UserButton session={session}/>
+          <UserButton session={session} />
         </div>
       </nav>
-      {/* {Upgrade banner} */}
+      <UpgradeBanner/>
     </header>
   );
 }

@@ -1,6 +1,5 @@
-import type { NextAuthOptions, TokenSet } from "next-auth"
+import type { NextAuthOptions } from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
-import Auth0Provider from "next-auth/providers/auth0"
 import CredentialsProvider from "next-auth/providers/credentials"
 import { FirestoreAdapter } from "@auth/firebase-adapter"
 import { adminAuth, adminDb } from "@/firebase-admin"
@@ -15,7 +14,7 @@ export const authOptions: NextAuthOptions = {
     // CredentialsProvider({
     //   name: "Credentials",
     //   credentials: {
-    //     username: { label: "Username", type: "text", placeholder: "username" },
+    //     email: { label: "Email", type: "text", placeholder: "email" },
     //     password: { label: "Password", type: "password" }
     //   },
     //   async authorize(credentials, req) {

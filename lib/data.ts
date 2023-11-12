@@ -32,7 +32,7 @@ export const features = [
 export const tiers = [
   {
     name: "Starter",
-    id: "starter",
+    id: "Free",
     href: "#",
     priceMonthly: "Free",
     description: "Start chatting with anyone, anywhere with some starter limitations!",
@@ -46,7 +46,7 @@ export const tiers = [
   },
   {
     name: "Basic",
-    id: "basic",
+    id: "price_1OBRCRIut3c5bZ090lG2JBiT",
     href: "#",
     priceMonthly: "$2.99",
     description: "Start chatting with anyone, anywhere with fewer limitations!",
@@ -60,9 +60,9 @@ export const tiers = [
   },
   {
     name: "Pro",
-    id: "pro",
+    id: "price_1OBRBhIut3c5bZ09RVVhReAm",
     href: "#",
-    priceMonthly: "$6.99",
+    priceMonthly: "$5.99",
     description: "Unlock the Full Potential with Pro Level Chatting!",
     features: [
       "Unlimited Messages In Chats",

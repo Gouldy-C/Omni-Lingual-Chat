@@ -9,9 +9,11 @@ import { CheckIcon } from "lucide-react"
 import { Button } from "./ui/button"
 import Link from "next/link"
 import CheckoutButton from "./CheckoutButton"
+import { useSubscriptionStore } from "@/store/store"
 
 
 export default function PricingCard({ redirect } : { redirect : boolean}) {
+
   return (
     <div className="grid mx-auto max-w-md grid-col-1 gap-8 lg:max-w-6xl lg:grid-cols-3 my-16">
       {tiers.map((tier) => (
@@ -45,10 +47,9 @@ export default function PricingCard({ redirect } : { redirect : boolean}) {
                 Get Started Today
               </Link>
             </Button>
-            ) : tier.priceMonthly === "Free" ? "" : 
-              (
-                <CheckoutButton/>
-              )
+            ) : (
+              <CheckoutButton id={tier.id}/>
+            )
           }
         </Card>
       ))}
