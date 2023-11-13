@@ -9,10 +9,10 @@ import { Stripe } from "stripe"
 import { headers } from "next/headers"
 
 
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {apiVersion:"2023-10-16"})
 
 
 export async function generatePortalLinkAction() {
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {apiVersion:"2023-10-16"})
   const session = await getServerSession(authOptions)
   const host = headers().get('host')
 

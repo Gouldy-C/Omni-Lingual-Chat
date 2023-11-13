@@ -8,7 +8,8 @@ function ManageAccountButton() {
 
   const handler = async () => {
     console.log("object here here");
-    await generatePortalLinkAction()}
+    generatePortalLinkAction()
+  }
 
   return (
     <form>
