@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Header from '@/components/Header'
-import { ThemeProvider } from "@/components/ThemeProvider"
-import ClientProviders from '@/components/ClientProviders'
+import { ThemeProvider } from "@/components/providers/ThemeProvider"
+import ClientProviders from '@/components/providers/ClientProviders'
 import './globals.css'
-import FirebaseAuthProvider from '@/components/FirebaseAuthProvider'
-import SubscriptionProvider from '@/components/SubsciptionProvider'
+import FirebaseAuthProvider from '@/components/providers/FirebaseAuthProvider'
+import SubscriptionProvider from '@/components/providers/SubsciptionProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 

@@ -7,6 +7,7 @@ import { addDoc, collection, onSnapshot } from "firebase/firestore"
 import { db } from "@/firebase"
 import LoadingSpinner from "./LoadingSpinner"
 import { useSubscriptionStore } from "@/store/store"
+import ManageAccountButton from "./ManageAccountButton"
 
 
 function CheckoutButton({id} : {id: string}) {
@@ -15,8 +16,7 @@ function CheckoutButton({id} : {id: string}) {
   const subscription = useSubscriptionStore((state) => state.subscription)
 
   const isLoadingSubscription = subscription === undefined
-  const isPro = subscription?.role === "pro"
-  const isBasic = subscription?.role === "basic"
+  
 
 
   const createCheckoutSession = async () => {
@@ -47,14 +47,25 @@ function CheckoutButton({id} : {id: string}) {
     })
   }
 
-
   return (
-    <Button 
-      className="shadow-md w-60 mb-6 rounded-xl"
-      variant="secondary"
-      onClick={() => createCheckoutSession()}>
-        {loading ? <LoadingSpinner/> : "Purchase"}
-    </Button>
+    <>
+      {id === "Free" ?
+        (subscription === null ? <p className="w-60 mb-6 text-center font-bold">Current Subscription</p>: "")
+          :
+        subscription?.items[0].price.id === id  ?
+          <ManageAccountButton/>
+          :
+          isLoadingSubscription || loading ?
+            <LoadingSpinner/>
+            :
+            <Button 
+              className="shadow-md w-60 mb-6 rounded-xl"
+              variant="secondary"
+              onClick={() => createCheckoutSession()}>
+              Purchase Plan
+            </Button>
+      }
+    </>
 )
 }
 

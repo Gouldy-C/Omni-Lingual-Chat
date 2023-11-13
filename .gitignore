@@ -35,3 +35,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+omni-lingual-app-firebase-adminsdk-me6um-b75b3ba63f.json

@@ -13,7 +13,7 @@ async function Header() {
   const session = await getServerSession(authOptions);
 
   return (
-    <header className="sticky top-0 z-50 bg-white dark:bg-slate-800">
+    <header className="sticky top-0 z-50 bg-white dark:bg-slate-600">
       <nav className="flex flex-col sm:flex-row items-center justify-between p-2 px-2 bg-white dark:bg-slate-600 max-w-7xl mx-auto">
         <Logo />
 

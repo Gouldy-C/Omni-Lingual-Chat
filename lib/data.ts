@@ -53,7 +53,7 @@ export const tiers = [
     features: [
       "Unlimited Messages In Chats",
       "2 Participants Per Chat",
-      "10 Chat Room Limit",
+      "2 Chat Room Limit",
       "Supports 3 Languages (English, German, + One Language Of Your Choice)",
       "World Class Customer Support"
     ]
