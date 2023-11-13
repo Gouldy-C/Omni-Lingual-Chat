@@ -1,16 +1,20 @@
 "use server"
+
 import { authOptions } from "@/authOptions"
 import { adminDb } from "@/firebase-admin"
 import { getServerSession } from "next-auth"
 import { revalidatePath } from "next/cache"
 import { redirect } from "next/navigation"
 import { Stripe } from "stripe"
+import { headers } from "next/headers"
+
 
 
 
 export async function generatePortalLinkAction() {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {apiVersion:"2023-10-16"})
   const session = await getServerSession(authOptions)
+  const host = headers().get('host')
 
   if (!session?.user.id) return console.error("No user found")
   const {
@@ -18,9 +22,9 @@ export async function generatePortalLinkAction() {
     } = session
 
   const returnUrl = process.env.NODE_ENV === "development" ?
-    process.env.NEXTAUTH_URL + "/register"
+    `http://${host}/register`
     :
-    process.env.NEXTAUTH_URL + "/register"
+    `https://${host}/register`
 
   const doc = await adminDb.collection("customers").doc(id).get()
 
