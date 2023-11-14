@@ -6,6 +6,7 @@ import ClientProviders from '@/components/providers/ClientProviders'
 import './globals.css'
 import FirebaseAuthProvider from '@/components/providers/FirebaseAuthProvider'
 import SubscriptionProvider from '@/components/providers/SubsciptionProvider'
+import { Toaster } from '@/components/ui/toaster'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,22 +24,25 @@ export default function RootLayout({
     <ClientProviders>
       <html lang="en">
         <head>
-          <link rel="icon" href="/ol-logo.svg" sizes="any"/>
+          <link rel="icon" href="/ol-logo.svg" sizes="any" media="(prefers-color-scheme:no-preference)"/>
+          <link rel="icon" href="/ol-logo.svg" sizes="any" media="(prefers-color-scheme:light)"/>
+          <link rel="icon" href="/ol-logo-light.svg" sizes="any" media="(prefers-color-scheme:dark)"/>
         </head>
         <body className={inter.className}>
           <FirebaseAuthProvider>
           <SubscriptionProvider>
-              <ThemeProvider
-                    attribute="class"
-                    defaultTheme="system"
-                    enableSystem
-                    disableTransitionOnChange>
+          <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange>
 
                 <Header />
 
                 {children}
 
-              </ThemeProvider>
+                <Toaster/>
+            </ThemeProvider>
             </SubscriptionProvider>
           </FirebaseAuthProvider>
         </body>

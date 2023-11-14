@@ -1,11 +1,10 @@
-import { LanguagesSupported, Subscription } from "@/lib/types";
-import { create } from 'zustand'
-
+import { LanguagesSupported, Subscription, LanguagesState } from "@/lib/types";
+import { create } from "zustand";
 
 export const LanguagesSupportedMap: Record<LanguagesSupported, string> = {
   en: "English",
-  es: "Spanish",
   de: "German",
+  es: "Spanish",
   fr: "French",
   nl: "Dutch",
   da: "Danish",
@@ -25,14 +24,32 @@ export const LanguagesSupportedMap: Record<LanguagesSupported, string> = {
   sv: "Swedish",
   uk: "Ukrainian",
   vi: "Vietnamese",
-}
+};
+
+export const useLanguageStore = create<LanguagesState>((set) => ({
+  language: "en",
+  setLanguage: (language: LanguagesSupported) => set({ language }),
+  getLanguages: (isPro: boolean) => {
+    if (isPro) {
+      return Object.keys(LanguagesSupportedMap) as LanguagesSupported[];
+    }
+    return Object.keys(LanguagesSupportedMap).slice(
+      0,
+      2
+    ) as LanguagesSupported[];
+  },
+  getNotSupportedLanguages: (isPro: boolean) => {
+    if (isPro) return [];
+    return Object.keys(LanguagesSupportedMap).slice(2) as LanguagesSupported[];
+  },
+}));
 
 interface SubscriptionState {
-  subscription: Subscription | null | undefined,
-  setSubscription: (subscription: Subscription | null) => void,
+  subscription: Subscription | null | undefined;
+  setSubscription: (subscription: Subscription | null) => void;
 }
 
 export const useSubscriptionStore = create<SubscriptionState>((set) => ({
   subscription: undefined,
-  setSubscription: (subscription: Subscription | null) => set({subscription})
-}))
+  setSubscription: (subscription: Subscription | null) => set({ subscription }),
+}));

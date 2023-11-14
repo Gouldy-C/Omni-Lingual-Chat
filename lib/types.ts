@@ -1,7 +1,6 @@
 import Stripe from "stripe"
 
 
-
 export interface tierInterface {
   name: string;
   id: string;
@@ -92,6 +91,7 @@ export interface Subscription {
   trial_end: FirebaseFirestore.Timestamp | null;
 }
 
+
 export type LanguagesSupported =
   'en' | 
   'es' | 
@@ -115,3 +115,38 @@ export type LanguagesSupported =
   'sv' | 
   'uk' | 
   'vi'
+
+
+export interface ChatMembers {
+  userId: string;
+  email: string;
+  timestamp: Date | null
+  isAdmin: boolean;
+  chatId: string;
+  image: string;
+}
+
+export interface User {
+  id: string
+  email: string
+  name: string
+  image:string
+}
+
+export interface Message {
+  id?: string
+  input: string
+  timestamp: Date
+  user: User
+  translated?: {
+    [K in LanguagesSupported]?: string
+  }
+}
+
+
+export interface LanguagesState {
+  language: LanguagesSupported
+  setLanguage: (language: LanguagesSupported) => void
+  getLanguages: (isPro: boolean) => LanguagesSupported[]
+  getNotSupportedLanguages: (isPro: boolean) => LanguagesSupported[]
+}

@@ -9,7 +9,7 @@ import { CheckIcon } from "lucide-react"
 import { Button } from "./ui/button"
 import Link from "next/link"
 import CheckoutButton from "./CheckoutButton"
-import { useSubscriptionStore } from "@/store/store"
+import { generatePortalLinkAction } from "@/actions/generatePortalLinkAction"
 
 
 export default function PricingCard({ redirect } : { redirect : boolean}) {
@@ -48,7 +48,7 @@ export default function PricingCard({ redirect } : { redirect : boolean}) {
               </Link>
             </Button>
             ) : (
-              <CheckoutButton id={tier.id}/>
+              <CheckoutButton generatePortalLinkAction={generatePortalLinkAction} id={tier.id}/>
             )
           }
         </Card>

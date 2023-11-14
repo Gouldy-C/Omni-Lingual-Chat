@@ -3,10 +3,8 @@
 import { authOptions } from "@/authOptions"
 import { adminDb } from "@/firebase-admin"
 import { getServerSession } from "next-auth"
-import { revalidatePath } from "next/cache"
-import { redirect } from "next/navigation"
-import { Stripe } from "stripe"
 import { headers } from "next/headers"
+import { Stripe } from "stripe"
 
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {apiVersion:"2023-10-16"})
@@ -38,9 +36,9 @@ export async function generatePortalLinkAction() {
       return_url: returnUrl,
     })
     
-    console.log(stripeSession.url)
-    redirect(stripeSession.url)
+    return stripeSession.url
   } catch (error) {
-    return console.error('Error creating billing portal session:', error);
+    console.error('Error creating billing portal session:', error);
   }
+  return "/register"
 }

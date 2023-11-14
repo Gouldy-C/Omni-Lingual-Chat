@@ -1,23 +1,22 @@
 "use client"
 
+import { redirect } from "next/navigation";
 import { Button } from "./ui/button";
-import { generatePortalLinkAction } from "@/actions/generatePortalLinkAction";
 
 
-function ManageAccountButton() {
+function ManageAccountButton({generatePortalLinkAction} : {generatePortalLinkAction: () => string}) {
 
-  const handler = async () => {
-    console.log("object here here");
-    generatePortalLinkAction()
+  const handleAction = async () => {
+    const portalUrl = await generatePortalLinkAction()
+    redirect(portalUrl);
   }
 
   return (
-    <form>
+    <form action={handleAction}>
       <Button
         type="submit"
         className="shadow-md w-60 mb-6 rounded-xl"
-        variant="secondary"
-        formAction={handler}>
+        variant="secondary">
         Manage Billing
       </Button>
     </form>

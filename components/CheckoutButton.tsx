@@ -1,16 +1,16 @@
 "use client"
 
-import { useSession } from "next-auth/react"
-import { Button } from "./ui/button"
-import { useState } from "react"
-import { addDoc, collection, onSnapshot } from "firebase/firestore"
 import { db } from "@/firebase"
-import LoadingSpinner from "./LoadingSpinner"
 import { useSubscriptionStore } from "@/store/store"
+import { addDoc, collection, onSnapshot } from "firebase/firestore"
+import { useSession } from "next-auth/react"
+import { useState } from "react"
+import LoadingSpinner from "./LoadingSpinner"
 import ManageAccountButton from "./ManageAccountButton"
+import { Button } from "./ui/button"
 
 
-function CheckoutButton({id} : {id: string}) {
+function CheckoutButton({id, generatePortalLinkAction} : {id: string, generatePortalLinkAction: () => string}) {
   const {data:session} = useSession()
   const [loading,setLoading] = useState(false)
   const subscription = useSubscriptionStore((state) => state.subscription)
@@ -53,7 +53,7 @@ function CheckoutButton({id} : {id: string}) {
         (subscription === null ? <p className="w-60 mb-6 text-center font-bold">Current Subscription</p>: "")
           :
         subscription?.items[0].price.id === id  ?
-          <ManageAccountButton/>
+          <ManageAccountButton generatePortalLinkAction={generatePortalLinkAction}/>
           :
           isLoadingSubscription || loading ?
             <LoadingSpinner/>

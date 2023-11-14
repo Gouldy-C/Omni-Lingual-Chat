@@ -5,7 +5,7 @@ import { getAuth } from "firebase/auth"
 import { getFunctions } from "firebase/functions"
 
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
+  apiKey: "AIzaSyDWZWGgSERZHlXC-Fn4QfCUqytyZhVgEdE",
   authDomain: "omni-lingual-app.firebaseapp.com",
   projectId: "omni-lingual-app",
   storageBucket: "omni-lingual-app.appspot.com",

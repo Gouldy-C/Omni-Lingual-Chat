@@ -8,6 +8,7 @@ import Link from "next/link";
 import { MessagesSquareIcon } from "lucide-react";
 import CreateChatButton from "./CreateChatButton";
 import UpgradeBanner from "./UpgradeBanner";
+import LanguageSelector from "./LanguageSelector";
 
 async function Header() {
   const session = await getServerSession(authOptions);
@@ -18,6 +19,8 @@ async function Header() {
         <Logo />
 
         <div className="flex gap-2 mt-3 sm:mt-0">
+          <LanguageSelector />
+
           {session ? (
             <>
               <Button
@@ -43,6 +46,7 @@ async function Header() {
           )}
 
           <ThemeToggle />
+          
           <UserButton session={session} />
         </div>
       </nav>
