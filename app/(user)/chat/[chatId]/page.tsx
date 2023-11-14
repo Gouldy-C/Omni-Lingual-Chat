@@ -1,4 +1,5 @@
 import { authOptions } from "@/authOptions"
+import ChatInput from "@/components/ChatInput"
 import { getServerSession } from "next-auth"
 
 
@@ -18,7 +19,7 @@ async function ChatPage() {
     {/* {Chat Messages} */}
 
     {/* {Chat Input} */}
-      <ChatInput/>
+      <ChatInput chatId={"chatId"}/>
     </>
   )
 }
