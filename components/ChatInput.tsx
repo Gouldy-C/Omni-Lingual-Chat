@@ -88,7 +88,7 @@ function ChatInput({chatId} : {chatId:string}) {
                 <FormItem className="flex-1">
                   <FormControl>
                     <Input
-                      className="border-none bg-transparent focus-visible:ring-offset-0 focus-visible:ring-0"
+                      className="border-none bg-transparent focus-visible:ring-offset-0 focus-visible:ring-0 dark:text-black"
                       placeholder="Message in Any language..."
                       {...field}/>
                   </FormControl>
