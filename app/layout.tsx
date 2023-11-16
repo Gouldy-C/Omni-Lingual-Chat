@@ -29,6 +29,7 @@ export default function RootLayout({
           <link rel="icon" href="/ol-logo.svg" sizes="any" media="(prefers-color-scheme:no-preference)"/>
           <link rel="icon" href="/ol-logo.svg" sizes="any" media="(prefers-color-scheme:light)"/>
           <link rel="icon" href="/ol-logo-light.svg" sizes="any" media="(prefers-color-scheme:dark)"/>
+          <meta name="google-site-verification" content="3hgcuW0-Rw3sP-wb6_gWrGvHRAlswyZiVjLeSQJYfsg" />
         </head>
         <body className={`h-screen flex flex-col ${inter.className}`}>
           <FirebaseAuthProvider>
