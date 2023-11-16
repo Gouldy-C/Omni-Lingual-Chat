@@ -61,7 +61,7 @@ function CheckoutButton({id, generatePortalLinkAction} : {id: string, generatePo
             Purchase Plan
           </Button>
           :
-          <ManageAccountButton generatePortalLinkAction={generatePortalLinkAction} current={subscription?.role === id && subscription.status === "active"}/>
+          <ManageAccountButton generatePortalLinkAction={generatePortalLinkAction} current={subscription.price.id === id}/>
       }
     </>
 )
