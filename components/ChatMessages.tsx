@@ -25,7 +25,7 @@ function ChatMessages({chatId, session , initialMessages} : {chatId:string, sess
     }, [messages, messagesEndRef])
 
   return (
-    <div className="m-5 mb-7 p-2 mb-auto bg-oasis-100 dark:bg-tiber-950 rounded-xl">
+    <div className="m-5 mb-7 p-2 bg-oasis-100 dark:bg-tiber-950 rounded-xl">
       {!loading && messages?.length === 0 && (
         <div className="flex flex-col justify-center items-center p-20 rounded-xl space-y-2 bg-oasis-100 font-extralight text-center">
           <MessageCircleIcon className="h-10 w-10"/>
