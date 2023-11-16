@@ -1,12 +1,13 @@
 "use client"
 
-import { limitedMessagesRef } from "@/lib/converters/Message"
+import { limitedSortedMessagesRef } from "@/lib/converters/Message"
 import { Message } from "@/lib/types"
 import { useCollectionData } from "react-firebase-hooks/firestore"
 import { Skeleton } from "./ui/skeleton"
 import UserAvatar from "./UserAvatar"
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
+import { useLanguageStore } from "@/store/store"
 
 
 
@@ -14,8 +15,9 @@ function ChatListRow( {chatId} : {chatId: string}) {
   const router = useRouter()
   const {data:session} = useSession()
   const [messages, loading, error] = useCollectionData<Message>(
-    limitedMessagesRef(chatId) 
+    limitedSortedMessagesRef(chatId) 
   )
+  const language = useLanguageStore((state) => state.language)
 
   function prettyUUID(n = 5) {
     return chatId.substring(0, n)
@@ -25,7 +27,7 @@ function ChatListRow( {chatId} : {chatId: string}) {
     <div 
       key={chatId}
       onClick={() => router.push(`/chat/${chatId}`)}
-      className="flex p-5 items-center space-x-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-slate-700 rounded-2xl">
+      className="flex p-5 items-center space-x-2 cursor-pointer shadow-md bg-white  dark:bg-livid-brown-950 hover:scale-[102%] duration-150 rounded-2xl m-3">
       <UserAvatar 
         className="hover:scale-100"
         name={message?.user.name || session?.user.name}
@@ -36,9 +38,9 @@ function ChatListRow( {chatId} : {chatId: string}) {
           {message && 
             [message?.user.name || session?.user.name].toString().split(" ")[0]}
         </p>
-        {/* <p className="text-gray-400 line-clamp-1">
-          {message?.translated.[language] || "Get the conversation started..."}
-        </p> */}
+        <p className="text-gray-400 line-clamp-1">
+          {message?.translated?.[language] || "Get the conversation started..."}
+        </p>
       </div>
       
       <div className="text-xs text-gray-400 text-right">

@@ -14,8 +14,8 @@ async function Header() {
   const session = await getServerSession(authOptions);
 
   return (
-    <header className="sticky top-0 z-50 bg-white dark:bg-slate-600">
-      <nav className="flex flex-col sm:flex-row items-center justify-between p-2 px-2 bg-white dark:bg-slate-600 max-w-7xl mx-auto">
+    <header className="sticky top-0 z-50 bg-oasis-100 dark:bg-tiber-950">
+      <nav className="flex flex-col sm:flex-row items-center justify-between p-2 px-2 bg-oasis-100 dark:bg-tiber-950 max-w-6xl mx-auto">
         <Logo />
 
         <div className="flex gap-2 mt-3 sm:mt-0">
@@ -23,23 +23,22 @@ async function Header() {
 
           {session ? (
             <>
-              <Button
-                variant="ghost"
-                className="px-0 rounded-full dark:hover:bg-slate-900">
-                <Link
-                  href={"/chat"}
-                  prefetch={false}
-                  className="flex justify-center items-center rounded-full w-10 h-10">
+              <Link
+                href={"/chat"}
+                prefetch={false}>
+                <Button
+                  variant="ghost"
+                  className="px-0 rounded-full w-10 h-10 hover:scale-110 mx-1">
                   <MessagesSquareIcon />
+                  </Button>
                 </Link>
-              </Button>
               <CreateChatButton />
             </>
           ) : (
             <>
               <Link
                 href={"/pricing"}
-                className="flex justify-center items-center rounded-full">
+                className="flex justify-center items-center rounded-full hover:scale-110 mx-1">
                 Pricing
               </Link>
             </>

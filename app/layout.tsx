@@ -7,6 +7,7 @@ import './globals.css'
 import FirebaseAuthProvider from '@/components/providers/FirebaseAuthProvider'
 import SubscriptionProvider from '@/components/providers/SubsciptionProvider'
 import { Toaster } from '@/components/ui/toaster'
+import OverlayComponent from '@/components/BackgroundOverlay'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
   description: 'Chat with anyone, anywhere in the world.',
 }
 
+
 export default function RootLayout({
   children,
 }: {
@@ -22,13 +24,13 @@ export default function RootLayout({
 }) {
   return (
     <ClientProviders>
-      <html lang="en">
+      <html lang="en" className='h-screen'>
         <head>
           <link rel="icon" href="/ol-logo.svg" sizes="any" media="(prefers-color-scheme:no-preference)"/>
           <link rel="icon" href="/ol-logo.svg" sizes="any" media="(prefers-color-scheme:light)"/>
           <link rel="icon" href="/ol-logo-light.svg" sizes="any" media="(prefers-color-scheme:dark)"/>
         </head>
-        <body className={inter.className}>
+        <body className={`h-screen flex flex-col ${inter.className}`}>
           <FirebaseAuthProvider>
           <SubscriptionProvider>
           <ThemeProvider
@@ -36,6 +38,8 @@ export default function RootLayout({
                 defaultTheme="system"
                 enableSystem
                 disableTransitionOnChange>
+                
+                {/* <OverlayComponent/> */}
 
                 <Header />
 

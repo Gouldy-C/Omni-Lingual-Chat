@@ -1,14 +1,15 @@
 import { db } from "@/firebase";
-import { LanguagesSupported, Message, User } from "@/lib/types"
-import { FirestoreDataConverter, 
-        DocumentData,
-        QueryDocumentSnapshot,
-        SnapshotOptions,
-        collection,
-        limit,
-        orderBy,
-        query,
-      } from "firebase/firestore"
+import { Message } from "@/lib/types";
+import {
+  DocumentData,
+  FirestoreDataConverter,
+  QueryDocumentSnapshot,
+  SnapshotOptions,
+  collection,
+  limit,
+  orderBy,
+  query,
+} from "firebase/firestore";
 
 
 

@@ -7,9 +7,10 @@ import { useSession } from "next-auth/react"
 import { useState } from "react"
 import { useToast } from "./ui/use-toast"
 import { useSubscriptionStore } from "@/store/store"
-import { v4 } from "uuid"
-import { addChatRef } from "@/lib/converters/ChatMembers"
-import { serverTimestamp, setDoc } from "firebase/firestore"
+import { v4 as uuidv4 } from "uuid"
+import { addChatRef, chatMembersCollectionGroupRef } from "@/lib/converters/ChatMembers"
+import { getDocs, serverTimestamp, setDoc } from "firebase/firestore"
+import { ToastAction } from "./ui/toast"
 
 export default function CreateChatButton({isLarge} : {isLarge?: boolean}) {
   const {data: session} = useSession()
@@ -18,7 +19,7 @@ export default function CreateChatButton({isLarge} : {isLarge?: boolean}) {
   const subscription = useSubscriptionStore((state) => state.subscription)
   const router = useRouter()
 
-  const chatId = "abc"
+  const isPro = subscription?.role === "pro" && subscription.status === "active"
 
   const createNewChat = async () => {
     if (!session?.user.id) return
@@ -30,7 +31,27 @@ export default function CreateChatButton({isLarge} : {isLarge?: boolean}) {
       duration: 3000,
     })
 
-    const chatId = v4()
+    const numberChats = (await getDocs(chatMembersCollectionGroupRef(
+      session?.user.id))).docs.map((doc) => doc.data()).length
+
+    if ( !isPro && numberChats >= 2) {
+      toast({
+        title: "Chat Limit Reached",
+        description: "You have reach the limit for number of allowed chats on your subscription tier!",
+        variant: "destructive",
+        duration: 4000,
+        action: (
+          <ToastAction
+            altText="Upgrade"
+            onClick={() => router.push("/register")}>
+            Upgrade to Pro
+          </ToastAction>
+        ),
+      })
+      return
+    }
+
+    const chatId = uuidv4()
 
     await setDoc(addChatRef(chatId, session.user.id), {
       userId: session.user.id,
@@ -62,7 +83,7 @@ export default function CreateChatButton({isLarge} : {isLarge?: boolean}) {
   const styleBtn = isLarge ? "outline" : "ghost"
 
   return (
-    <Button variant={styleBtn} onClick={() => createNewChat()} className="px-2 rounded-full dark:hover:bg-slate-900">
+    <Button variant={"ghost"} onClick={() => createNewChat()} className={`px-2 rounded-full   hover:scale-110 ${isLarge && "bg-livid-brown-950 px-4 text-white duration-200 hover:bg-livid-brown-950 hover:text-white"}`}>
       {isLarge ? "Create A New Chat" : <MessageSquarePlusIcon/>}
     </Button>
   )

@@ -13,6 +13,7 @@ async function ChatList() {
     chatMembersCollectionGroupRef(session?.user.id!)
   )
 
+
   const initialChats = chatSnapshot.docs.map((doc) => ({
     ...doc.data(),
     timestamp: null,

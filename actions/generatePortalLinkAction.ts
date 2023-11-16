@@ -15,6 +15,7 @@ export async function generatePortalLinkAction() {
   const host = headers().get('host')
 
   if (!session?.user.id) return console.error("No user found")
+  
   const {
     user: {id},
     } = session

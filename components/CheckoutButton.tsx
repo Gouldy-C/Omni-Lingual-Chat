@@ -10,7 +10,7 @@ import ManageAccountButton from "./ManageAccountButton"
 import { Button } from "./ui/button"
 
 
-function CheckoutButton({id, generatePortalLinkAction} : {id: string, generatePortalLinkAction: () => string}) {
+function CheckoutButton({id, generatePortalLinkAction} : {id: string, generatePortalLinkAction: () => Promise<string | void>}) {
   const {data:session} = useSession()
   const [loading,setLoading] = useState(false)
   const subscription = useSubscriptionStore((state) => state.subscription)
@@ -59,8 +59,8 @@ function CheckoutButton({id, generatePortalLinkAction} : {id: string, generatePo
             <LoadingSpinner/>
             :
             <Button 
-              className="shadow-md w-60 mb-6 rounded-xl"
-              variant="secondary"
+              className="shadow-md w-60 mb-6 rounded-xl bg-oasis-100 text-black"
+              variant="outline"
               onClick={() => createCheckoutSession()}>
               Purchase Plan
             </Button>

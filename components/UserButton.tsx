@@ -20,9 +20,9 @@ export default function UserButton({session}:{session : Session | null}) {
   const subscription = useSubscriptionStore((state) => state.subscription)
 
   const { push } = useRouter()
-  // subscription listener
+
   if (!session) return (
-    <Button onClick={() => signIn()}>
+    <Button variant={"secondary"} onClick={() => signIn()} className="mx-1 hover:opacity-80 dark:bg-oasis-100 dark:text-black bg-livid-brown-500">
       Sign In
     </Button>
   )
