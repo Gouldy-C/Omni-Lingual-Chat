@@ -40,6 +40,7 @@ export default function CreateChatButton({isLarge} : {isLarge?: boolean}) {
         description: "You have reach the limit for number of allowed chats on your subscription tier!",
         variant: "destructive",
         duration: 4000,
+        className:"flex flex-col",
         action: (
           <ToastAction
             altText="Upgrade"

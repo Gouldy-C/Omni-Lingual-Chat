@@ -56,8 +56,8 @@ function InviteUser({chatId} : {chatId:string}) {
       description: "Please wait while we send the invite..."
     })
 
-    const noOfUsersInChat = ((await getDocs(chatMembersRef(chatId))).docs.map(
-      (doc) => doc.data()).length)
+    const noOfUsersInChat = (await getDocs(chatMembersRef(chatId))).docs.map(
+      (doc) => doc.data()).length
     
     const isPro = subscription?.role === "pro" && subscription.status === "active"
 
@@ -66,6 +66,7 @@ function InviteUser({chatId} : {chatId:string}) {
         title: "Free and Basic plan limit exceeded",
         description: "You have exceeded the plan limit for number of users in a single chat. Please upgrade to Pro to add more users to this chat!",
         variant: "destructive",
+        className:"flex flex-col",
         action: (
           <ToastAction
             altText="Upgrade"
@@ -76,6 +77,7 @@ function InviteUser({chatId} : {chatId:string}) {
       })
       return
     }
+    
     const querySnapshot = await getDocs(getUserByEmailRef(values.email))
 
     if (querySnapshot.empty) {
@@ -84,6 +86,7 @@ function InviteUser({chatId} : {chatId:string}) {
         description: "Please enter a valid member email address",
         variant: "destructive"
       })
+      
       return
     } else {
       form.reset

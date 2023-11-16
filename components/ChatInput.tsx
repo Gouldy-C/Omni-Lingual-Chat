@@ -47,7 +47,7 @@ function ChatInput({chatId} : {chatId:string}) {
       toast({
         title: "Tier Limit For Messages",
         description: "Reached tier limit for messages, you can not create anymore messages in this chat!",
-        className: "text-black",
+        className: "text-black flex flex-col",
         variant:"destructive",
         duration: 3000,
         action: (
