@@ -53,7 +53,7 @@ function CheckoutButton({id, generatePortalLinkAction} : {id: string, generatePo
       {id === "Free" ?
         (subscription === null ? <p className="w-60 mb-6 text-center font-bold">Current Subscription</p>: "")
           :
-        !(subscription?.status ==="active")  ?
+        !(subscription)  ?
           <Button 
             className="shadow-md w-60 mb-6 rounded-xl bg-oasis-100 text-black"
             variant="outline"
