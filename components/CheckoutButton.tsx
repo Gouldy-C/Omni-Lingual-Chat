@@ -49,21 +49,19 @@ function CheckoutButton({id, generatePortalLinkAction} : {id: string, generatePo
 
   return (
     <>
+      {(isLoadingSubscription || loading) && <LoadingSpinner/>}
       {id === "Free" ?
         (subscription === null ? <p className="w-60 mb-6 text-center font-bold">Current Subscription</p>: "")
           :
-        subscription?.items[0].price.id === id  ?
-          <ManageAccountButton generatePortalLinkAction={generatePortalLinkAction}/>
+        !(subscription?.status ==="active")  ?
+          <Button 
+            className="shadow-md w-60 mb-6 rounded-xl bg-oasis-100 text-black"
+            variant="outline"
+            onClick={() => createCheckoutSession()}>
+            Purchase Plan
+          </Button>
           :
-          isLoadingSubscription || loading ?
-            <LoadingSpinner/>
-            :
-            <Button 
-              className="shadow-md w-60 mb-6 rounded-xl bg-oasis-100 text-black"
-              variant="outline"
-              onClick={() => createCheckoutSession()}>
-              Purchase Plan
-            </Button>
+          <ManageAccountButton generatePortalLinkAction={generatePortalLinkAction} current={subscription?.role === id && subscription.status === "active"}/>
       }
     </>
 )
