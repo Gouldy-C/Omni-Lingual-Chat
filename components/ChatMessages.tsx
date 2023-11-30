@@ -61,7 +61,7 @@ function ChatMessages({chatId, session , initialMessages} : {chatId:string, sess
                 {message.user.name.split(" ")[0]}
               </p>
 
-              <div className="flex flex-col font-semibold">
+              <div className="flex flex-col font-semibold text-sm sm:text-base">
                 <p>
                   {message.translated?.[language] || message.input}
                 </p>
