@@ -8,7 +8,7 @@ export default function Home() {
     <main className="">
       <div className="py-12 sm:py-20 lg:pb-40">
         <div className='mx-auto max-w-7xl px-6 lg:px-8'>
-          <div className='mx-auto max-w-4xl text-center bg-stone-400/40 px-16 py-10 rounded-3xl dark:bg-tiber-950/70'>
+          <div className='mx-auto max-w-4xl text-center bg-white/70 px-16 py-10 rounded-3xl dark:bg-tiber-950/70'>
             <h1 className='text-4xl font-bold tracking-tight sm:text-6xl'>
               Chat with Anyone, Anywhere in the World!
             </h1>
