@@ -3,15 +3,20 @@ import { useTheme } from "next-themes";
 const OverlayComponent = () => {
   
   return (
-      <svg id='patternId' className="-z-50 absolute dark:invert opacity-[10%]" width='100%' height='100vh' xmlns='http://www.w3.org/2000/svg'>
+    <div className="w-full h-screen flex justify-center absolute -z-50 overflow-hidden">
+      <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 700 450" opacity="0.80" height="100%" width="100%">
         <defs>
-          <pattern id='a' patternUnits='userSpaceOnUse' width='29' height='50.115' patternTransform='scale(3) rotate(0)'>
-            <rect x='0' y='0' width='100%' height='100%' fill='hsla(0, 0%, 100%, 0)'/>
-            <path d='M14.498 16.858L0 8.488.002-8.257l14.5-8.374L29-8.26l-.002 16.745zm0 50.06L0 58.548l.002-16.745 14.5-8.373L29 41.8l-.002 16.744zM28.996 41.8l-14.498-8.37.002-16.744L29 8.312l14.498 8.37-.002 16.745zm-29 0l-14.498-8.37.002-16.744L0 8.312l14.498 8.37-.002 16.745z'  strokeWidth='2.5' stroke='hsla(0, 0%, 0%, 1)' fill='none'/>
-          </pattern>
+          <filter id="bbblurry-filter" x="-100%" y="-100%" width="400%" height="400%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+            <feGaussianBlur stdDeviation="84" x="0%" y="0%" width="100%" height="100%" in="SourceGraphic" edgeMode="none" result="blur"></feGaussianBlur>
+          </filter>
         </defs>
-        <rect width='800%' height='800%' transform='translate(0,0)' fill='url(#a)'/>
+        <g filter="url(#bbblurry-filter)">
+          <ellipse rx="145" ry="24.5" cx="200" cy="190" fill="hsl(37, 99%, 67%)"></ellipse>
+          <ellipse rx="145" ry="24.5" cx="480" cy="260" fill="hsl(316, 99%, 55%)"></ellipse>
+          <ellipse rx="145" ry="24.5" cx="530" cy="75" fill="hsl(185, 100%, 57%)"></ellipse>
+        </g>
       </svg>
+    </div>
     )
   };
 

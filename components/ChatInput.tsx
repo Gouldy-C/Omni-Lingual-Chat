@@ -12,7 +12,7 @@ import { Form, FormControl, FormField, FormItem } from "./ui/form"
 import { useToast } from "./ui/use-toast"
 import { ToastAction } from "./ui/toast"
 import { useRouter } from "next/navigation"
-import { useEffect, useLayoutEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Mic, StopCircle } from "lucide-react"
 import { Textarea } from "./ui/textarea"
 
@@ -36,7 +36,7 @@ function ChatInput({chatId} : {chatId:string}) {
   const isPremium = (subscription?.role === "pro" || subscription?.role === "basic") && subscription.status === "active"
   const {toast} = useToast()
   const router = useRouter()
-  
+
   const textareaRef =  useRef<any>(null)
   
 

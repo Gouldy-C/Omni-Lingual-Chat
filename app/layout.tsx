@@ -44,6 +44,8 @@ export default function RootLayout({
 
                 <Header />
 
+                <OverlayComponent />
+
                 {children}
 
                 <Toaster/>
