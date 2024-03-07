@@ -32,5 +32,9 @@ export const authOptions: NextAuthOptions = {
       return token
     }
   },
+  theme: {
+    colorScheme: "light", // "auto" | "dark" | "light"
+    logo: "./ol-logo.svg", // Absolute URL to image
+  },
   adapter: FirestoreAdapter(adminDb),
 } satisfies NextAuthOptions
