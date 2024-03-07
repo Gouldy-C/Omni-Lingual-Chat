@@ -34,6 +34,7 @@ export const authOptions: NextAuthOptions = {
   },
   theme: {
     colorScheme: "auto", // "auto" | "dark" | "light"
+    brandColor: "#ffffff", // Hex color code
   },
   adapter: FirestoreAdapter(adminDb),
 } satisfies NextAuthOptions
