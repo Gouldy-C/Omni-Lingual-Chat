@@ -8,6 +8,7 @@ import FirebaseAuthProvider from '@/components/providers/FirebaseAuthProvider'
 import SubscriptionProvider from '@/components/providers/SubsciptionProvider'
 import { Toaster } from '@/components/ui/toaster'
 import OverlayComponent from '@/components/BackgroundOverlay'
+import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -48,6 +49,8 @@ export default function RootLayout({
 
                 {children}
 
+                <Analytics />
+                
                 <Toaster/>
             </ThemeProvider>
             </SubscriptionProvider>
