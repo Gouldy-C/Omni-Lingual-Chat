@@ -57,10 +57,7 @@ export default function UserButton({session}:{session : Session | null}) {
         <DropdownMenuItem  onClick={() => push("/register")} className=" cursor-pointer">
             Manage Account
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => {
-                    signOut()
-                    push("/")
-            }} className=" cursor-pointer">
+        <DropdownMenuItem onClick={() => signOut({ callbackUrl: 'https://omni-lingual.online/' })} className=" cursor-pointer">
           Sign Out
         </DropdownMenuItem>
       </DropdownMenuContent>
