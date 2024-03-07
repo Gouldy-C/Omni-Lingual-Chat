@@ -22,7 +22,7 @@ export default function UserButton({session}:{session : Session | null}) {
   const { push } = useRouter()
 
   if (!session) return (
-    <Button variant={"secondary"} onClick={() => signIn()} className="mx-1 hover:opacity-80 dark:bg-oasis-100 dark:text-black bg-livid-brown-500">
+    <Button variant={"secondary"} onClick={() => signIn(undefined, {callbackUrl: '/chat'})} className="mx-1 hover:opacity-80 dark:bg-oasis-100 dark:text-black bg-livid-brown-500">
       Sign In
     </Button>
   )
@@ -57,7 +57,7 @@ export default function UserButton({session}:{session : Session | null}) {
         <DropdownMenuItem  onClick={() => push("/register")} className=" cursor-pointer">
             Manage Account
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => signOut({ callbackUrl: 'https://omni-lingual.online/' })} className=" cursor-pointer">
+        <DropdownMenuItem onClick={() => signOut({ callbackUrl: '/' })} className=" cursor-pointer">
           Sign Out
         </DropdownMenuItem>
       </DropdownMenuContent>
