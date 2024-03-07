@@ -33,7 +33,7 @@ export const authOptions: NextAuthOptions = {
     }
   },
   theme: {
-    colorScheme: "light", // "auto" | "dark" | "light"
+    colorScheme: "auto", // "auto" | "dark" | "light"
   },
   adapter: FirestoreAdapter(adminDb),
 } satisfies NextAuthOptions

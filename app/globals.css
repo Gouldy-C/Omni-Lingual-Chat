@@ -84,7 +84,3 @@
 .hide-scroll::-webkit-scrollbar {
   display: none;
 }
-
-button :hover {
-  background-color: darkgray;
-}
