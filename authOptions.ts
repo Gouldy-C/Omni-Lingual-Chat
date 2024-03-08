@@ -4,6 +4,7 @@ import { FirestoreAdapter } from "@auth/firebase-adapter"
 import { adminAuth, adminDb } from "@/firebase-admin"
 
 
+
 export const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
